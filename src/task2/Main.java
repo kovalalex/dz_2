@@ -29,7 +29,6 @@ public class Main {
             double q = Math.sqrt(massiv[k]); //число q соответсвтвующее k
 
             int integralPart = (int) q; //целая часть числа q
-
             if (Math.pow(integralPart, 2) == massiv[k]) {
                 System.out.println(massiv[k]);
             }

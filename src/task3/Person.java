@@ -5,11 +5,19 @@ package task3;
  *
  * @author Александр Коваленко
  */
-public class Person implements Cloneable {
+public class Person implements Comparable {
 
-
+    /**
+     * Поле содержащее возраст
+     */
     private int age;
+    /**
+     * Поле содержащее имя
+     */
     private String name;
+    /**
+     * Поле содержащее пол
+     */
     private Sex sex;
 
     public Person(int age, String name, Sex sex) {
@@ -42,9 +50,7 @@ public class Person implements Cloneable {
         return sex;
     }
 
-    /**
-     * Метод текстовой серилизации полей класса
-     */
+
     @Override
     public String toString() {
         return "Person{" +
@@ -54,4 +60,26 @@ public class Person implements Cloneable {
                 '}';
     }
 
+
+    @Override
+    public int compareTo(Object o) {
+        if (!(o instanceof Person))
+            return -1;
+        Person p2 = (Person) o;
+        int x;
+        if (this.getSex().equals(Sex.MAN) && p2.getSex().equals(Sex.WOMAN)) {
+            x = -1;
+            return x;
+        }
+        if (this.getSex().equals(Sex.WOMAN) && p2.getSex().equals(Sex.MAN)) {
+            x = 1;
+            return x;
+        }
+        if (p2.getAge() - this.getAge() != 0)
+            return p2.getAge() - this.getAge();
+
+
+        return this.getName().compareTo(p2.getName());
+
+    }
 }

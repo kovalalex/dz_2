@@ -1,6 +1,5 @@
 package task3;
 
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -12,7 +11,7 @@ public class Main {
     /**
      * Константа задающая размер массива
      */
-    public static final int N = 10000;
+    public static final int N = 1000;
 
     public static void main(String[] args) {
 
@@ -20,20 +19,20 @@ public class Main {
         generateMassiv(massiv);
         Person[] massiv2 = massiv; //продублируем массив для сравнения методов сортировки
 
-
+        PersonSortable sort1 = new PersonSort1();
         long startTime = System.currentTimeMillis();
-        Arrays.sort(massiv, new PersonComparator1());
+        sort1.sort(massiv);
         System.out.println(System.currentTimeMillis() - startTime);
 
-        PersonComparator2 personComparator2 = new PersonComparator2();
+        PersonSortable sort2 = new PersonSort2();
         long startTime2 = System.currentTimeMillis();
-        personComparator2.sort(massiv2);
+        sort2.sort(massiv2);
         System.out.println(System.currentTimeMillis() - startTime2);
 
 
-        //  for (int i = 0; i < massiv.length; i++) {
-        //       System.out.println(massiv[i]);
-        //  }
+//          for (int i = 0; i < massiv.length; i++) {
+//               System.out.println(massiv[i]);
+//          }
     }
 
     /**
